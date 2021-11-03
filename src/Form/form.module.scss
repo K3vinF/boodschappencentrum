@@ -1,0 +1,12 @@
+.form {
+  p {
+    display: flex;
+  }
+  label {
+    width: 20em;
+    display: block;
+  }
+  .error {
+    @apply text-red-800;
+  }
+}

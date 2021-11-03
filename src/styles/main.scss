@@ -1,0 +1,12 @@
+body, html {
+  min-height: 100%;
+}
+.sticky {
+  z-index: 10;
+}
+
+input {
+  @apply p-2;
+  @apply text-white;
+  @apply bg-gray-200;
+}
