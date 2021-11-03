@@ -30,9 +30,9 @@ const Header = (props: INavbarProps) => {
             <a>
               <img
                 src={'/assets/boodschappencentrumheenvliet.svg'}
-                alt={''}
-                width={300}
-                height={200}
+                alt={'Boodsschappencentrum Heenvliet'}
+                width={460}
+                height={98}
               />
             </a>
           </Link>
