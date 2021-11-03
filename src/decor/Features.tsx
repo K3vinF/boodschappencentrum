@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './features.module.scss';
-import Image from 'next/image';
+
 import { motion } from 'framer-motion';
 
 interface FeatureProps {
@@ -11,7 +11,8 @@ interface FeatureProps {
 const Feature = (props: FeatureProps) => {
   return (
     <section className={styles.feature}>
-      <Image src={props.img} width={200} height={200} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={props.img} width={200} height={200} alt={''} />
       <div className={'font-display label bg-yellow text-black'}>{props.text}</div>
     </section>
   );
