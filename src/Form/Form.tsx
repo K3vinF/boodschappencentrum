@@ -19,6 +19,25 @@ export default function CustomForm(props: { className: string }) {
   // eslint-disable-next-line no-console
   const onSubmit = (data: any) => console.log(data);
 
+  function useScrollToError(errors: { [x: string]: any }) {
+    // Find the 'highest' visible error:
+    let firstVisualErrorPosition = 0;
+    let firstVisualError = null;
+    for (const error of Object.values(errors)) {
+      if (error?.ref) {
+        let y = error.ref.getBoundingClientRect().top;
+        console.log(y);
+        if (y < firstVisualErrorPosition || firstVisualErrorPosition == 0) {
+          firstVisualErrorPosition = y;
+          firstVisualError = error.ref;
+        }
+      }
+    }
+    firstVisualError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  useScrollToError(errors);
+
   return (
     <form
       className={props.className + ' ' + styles.form}
@@ -36,6 +55,8 @@ export default function CustomForm(props: { className: string }) {
         </label>
       </div>
 
+      <h2>Je gegevens</h2>
+
       <p>
         <label htmlFor="firstname">Je voornaam:</label>
         <input
@@ -44,7 +65,7 @@ export default function CustomForm(props: { className: string }) {
           name="firstname"
           id="firstname"
         />
-        {errors.firstname && <span className={'error'}>Vul je voornaam in</span>}
+        {errors.firstname && <span className={styles.error}>Vul je voornaam in</span>}
       </p>
 
       <p>
@@ -55,13 +76,13 @@ export default function CustomForm(props: { className: string }) {
           name="lastname"
           id="lastname"
         />
-        {errors.lastname && <span className={'error'}>Vul je achternaam in</span>}
+        {errors.lastname && <span className={styles.error}>Vul je achternaam in</span>}
       </p>
 
       <p>
         <label htmlFor="phone">Je telefoonnummer:</label>
         <input {...register('phone', { required: true })} type="text" name="phone" id="phone" />
-        {errors.lastname && <span className={'error'}>Vul je telefoonnummer in</span>}
+        {errors.phone && <span className={styles.error}>Vul je telefoonnummer in</span>}
       </p>
 
       <p>
@@ -75,11 +96,31 @@ export default function CustomForm(props: { className: string }) {
           name="birthdate"
           id="birthdate"
         />
-        {errors.lastname && <span className={'error'}>Vul je geboortedatum in</span>}
+        {errors.lastname && <span className={styles.error}>Vul je geboortedatum in</span>}
+      </p>
+
+      <h2>In welke winkels zou je willen werken?</h2>
+      <p>
+        <label>
+          <input type={'checkbox'} name={'shop'} defaultChecked={true} value={'ah'} />
+          Albert Heijn
+        </label>
+        <label>
+          <input type={'checkbox'} name={'shop'} defaultChecked={true} value={'etos'} />
+          Etos
+        </label>
+        <label>
+          <input type={'checkbox'} name={'shop'} defaultChecked={true} value={'primera'} />
+          Primera
+        </label>
+        <label>
+          <input type={'checkbox'} name={'shop'} defaultChecked={true} value={'gall'} />
+          Gall & Gall
+        </label>
       </p>
 
       <p>
-        <button onClick={() => TrackClickEvent('contact-form')}>Verzenden</button>
+        <button onClick={() => TrackClickEvent('contact-form')}>Verstuur je sollicitatie!</button>
       </p>
     </form>
   );

@@ -1,12 +1,14 @@
 .form {
   p {
     display: flex;
+    flex-direction: column;
+    margin-top: 1em;
   }
   label {
-    width: 20em;
+    width: 100%;
     display: block;
   }
   .error {
-    @apply text-red-800;
+    @apply text-yellow;
   }
 }
