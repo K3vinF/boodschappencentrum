@@ -27,6 +27,7 @@
     "react-ga": "^3.3.0",
     "react-hamburger-drawer": "^21.9.5",
     "react-hook-form": "^7.18.0",
+    "react-icons": "^4.3.1",
     "react-sticky-el": "^2.0.9",
     "rehype-stringify": "^8.0.0",
     "remark-gfm": "^1.0.0",

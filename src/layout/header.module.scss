@@ -3,4 +3,23 @@
   @apply text-yellow;
   @apply text-2xl;
   top: 0;
+  margin-left: 2em;
+  margin-top: -.5em;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 20vw;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  transition: 0.2s transform linear;
+  @apply leading-10;
+  @apply bg-gray-100;
+  @apply p-7;
+}
+
+.menuclosed {
+  transform: translateX(-100%);
 }

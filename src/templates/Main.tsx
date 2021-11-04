@@ -1,10 +1,11 @@
-import React, { ReactNode } from 'react';
-// import { Config } from '../utils/Config';
+import React, { ReactNode, useCallback, useState } from 'react';
 import { Header } from '../layout/Header';
-import { Footer } from '../layout/Footer';
 import Sticky from 'react-sticky-el';
 import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
+import classnames from 'classnames';
+import styles from '../layout/header.module.scss';
+import Link from 'next/link';
 
 type IMainProps = {
   meta: ReactNode;
@@ -12,12 +13,41 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => {
+  const [menuOpen, openMenu] = useState(false);
+  const closeMenu = useCallback(() => {
+    openMenu(false);
+  }, [openMenu]);
+
   const router = useRouter();
+  router.events?.on('routeChangeStart', closeMenu);
+
   return (
     <AnimateSharedLayout>
       <AnimatePresence key={router.asPath}>
-        <Sticky>
-          <Header />
+        <div
+          className={classnames(styles.menu, { [`${styles.menuclosed}`]: !menuOpen })}
+          key={'menu'}
+        >
+          <ul>
+            <li>
+              <Link href={'/'}>
+                <a>Home</a>
+              </Link>
+            </li>
+            <li>
+              <Link href={'/solliciteren'}>
+                <a>Solliciteren</a>
+              </Link>
+            </li>
+            <li>
+              <Link href={'/contact'}>
+                <a>Contact</a>
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <Sticky mode={'top'}>
+          <Header menuOpen={menuOpen} closeMenu={closeMenu} openMenu={openMenu} />
         </Sticky>
 
         <motion.div
@@ -39,16 +69,13 @@ const Main = (props: IMainProps) => {
           }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          <main className="antialiased w-full px-3 md:px-0">
+          <main className="antialiased w-full px-5 md:px-0">
             {props.meta}
             <div className="max-w-screen-md mx-auto">
               <div className="text-xl py-5">{props.children}</div>
             </div>
           </main>
         </motion.div>
-        <Sticky mode={'bottom'}>
-          <Footer />
-        </Sticky>
       </AnimatePresence>
     </AnimateSharedLayout>
   );

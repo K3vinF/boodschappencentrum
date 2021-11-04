@@ -6,7 +6,7 @@ import { Main } from '../templates/Main';
 // import CustomForm from "../Form/Form";
 
 const Solliciteren = () => (
-  <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
+  <Main meta={<Meta title="Contact" description="" />}>
     <Content>
       <h1>Contact</h1>
       <p>Heb je vragen? Lopen even in de winkel binnen, en vraag naar Tom of Thierry?</p>

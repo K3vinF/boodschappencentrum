@@ -1,12 +1,46 @@
 body, html {
   min-height: 100%;
+  overflow-x: hidden;
 }
 .sticky {
   z-index: 10;
+}
+
+main {
+  min-height: 100vh;
 }
 
 input {
   @apply p-2;
   @apply text-white;
   @apply bg-gray-200;
+}
+
+button {
+  @apply bg-green;
+  @apply text-white;
+  @apply p-2;
+  @apply rounded;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-top: 1em;
+  @apply font-display;
+  @apply text-yellow;
+}
+
+p {
+  margin-top: 1em;
+}
+
+h1 {
+  @apply text-3xl;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+h3 {
+  @apply text-xl;
 }
