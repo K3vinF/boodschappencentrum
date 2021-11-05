@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ReactGA from 'react-ga';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import styles from './form.module.scss';
+import _ from 'lodash/fp';
 
 export const TrackClickEvent = (action: string) => {
   ReactGA.event({
@@ -11,22 +14,25 @@ export const TrackClickEvent = (action: string) => {
 };
 
 export default function CustomForm(props: { className: string }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  // eslint-disable-next-line no-console
-  const onSubmit = (data: any) => console.log(data);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  function useScrollToError(errors: { [x: string]: any }) {
-    // Find the 'highest' visible error:
+  const { register, control, handleSubmit, formState } = useForm({ reValidateMode: 'onSubmit' });
+
+  const onSubmit = () => {
+    if (!_.isEmpty(formState.errors)) {
+      ScrollToError(formState.errors);
+    } else {
+      formRef.current?.submit();
+    }
+  };
+
+  const ScrollToError = (errors: { [x: string]: any }) => {
+    // Find the 'highest' visible error and scroll there:
     let firstVisualErrorPosition = 0;
     let firstVisualError = null;
     for (const error of Object.values(errors)) {
       if (error?.ref) {
         let y = error.ref.getBoundingClientRect().top;
-        console.log(y);
         if (y < firstVisualErrorPosition || firstVisualErrorPosition == 0) {
           firstVisualErrorPosition = y;
           firstVisualError = error.ref;
@@ -34,17 +40,16 @@ export default function CustomForm(props: { className: string }) {
       }
     }
     firstVisualError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  useScrollToError(errors);
+  };
 
   return (
     <form
       className={props.className + ' ' + styles.form}
       name="job-application"
-      action="/success"
+      action="/bedankt"
       onSubmit={handleSubmit(onSubmit)}
       method="POST"
+      ref={formRef}
       data-netlify="true"
     >
       <input type="hidden" name="form-name" value="contact" />
@@ -64,8 +69,9 @@ export default function CustomForm(props: { className: string }) {
           type="text"
           name="firstname"
           id="firstname"
+          autoComplete={'given-name'}
         />
-        {errors.firstname && <span className={styles.error}>Vul je voornaam in</span>}
+        {formState.errors.firstname && <span className={styles.error}>Vul je voornaam in</span>}
       </p>
 
       <p>
@@ -75,46 +81,63 @@ export default function CustomForm(props: { className: string }) {
           type="text"
           name="lastname"
           id="lastname"
+          autoComplete={'family-name'}
         />
-        {errors.lastname && <span className={styles.error}>Vul je achternaam in</span>}
+        {formState.errors.lastname && <span className={styles.error}>Vul je achternaam in</span>}
       </p>
 
       <p>
         <label htmlFor="phone">Je telefoonnummer:</label>
-        <input {...register('phone', { required: true })} type="text" name="phone" id="phone" />
-        {errors.phone && <span className={styles.error}>Vul je telefoonnummer in</span>}
+        <input
+          {...register('phone', { required: true, minLength: 6, maxLength: 12 })}
+          type="tel"
+          name="phone"
+          id="phone"
+          autoComplete={'tel'}
+        />
+        {formState.errors.phone && (
+          <span className={styles.error}>Vul je volledige telefoonnummer in</span>
+        )}
       </p>
 
       <p>
-        <label htmlFor="birthdate">Je geboortedatum</label>
-        <input
-          defaultValue="2005-01-01"
-          min="1950-01-1"
-          max="2007-01-01"
-          {...register('birthdate', { required: true })}
-          type="date"
-          name="birthdate"
-          id="birthdate"
+        <label htmlFor="phone">Je geboortedatum:</label>
+        <Controller
+          control={control}
+          name="birthday"
+          rules={{ required: true }}
+          render={({ field }) => (
+            <DatePicker
+              placeholderText="Selecteer je geboortedatum"
+              onChange={(date) => field.onChange(date)}
+              selected={field.value}
+              showYearDropdown
+              yearDropdownItemNumber={80}
+              scrollableYearDropdown
+              startDate={new Date('1950-01-01')}
+              maxDate={new Date('2007-01-01')}
+            />
+          )}
         />
-        {errors.lastname && <span className={styles.error}>Vul je geboortedatum in</span>}
+        {formState.errors.birthday && <span className={styles.error}>Vul je geboortedatum in</span>}
       </p>
 
       <h2>In welke winkels zou je willen werken?</h2>
       <p>
         <label>
-          <input type={'checkbox'} name={'shop'} defaultChecked={true} value={'ah'} />
+          <input type={'checkbox'} name={'shop'} value={'ah'} />
           Albert Heijn
         </label>
         <label>
-          <input type={'checkbox'} name={'shop'} defaultChecked={true} value={'etos'} />
+          <input type={'checkbox'} name={'shop'} value={'etos'} />
           Etos
         </label>
         <label>
-          <input type={'checkbox'} name={'shop'} defaultChecked={true} value={'primera'} />
+          <input type={'checkbox'} name={'shop'} value={'primera'} />
           Primera
         </label>
         <label>
-          <input type={'checkbox'} name={'shop'} defaultChecked={true} value={'gall'} />
+          <input type={'checkbox'} name={'shop'} value={'gall'} />
           Gall & Gall
         </label>
       </p>
