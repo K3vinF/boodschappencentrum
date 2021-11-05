@@ -12,7 +12,7 @@ const Feature = (props: FeatureProps) => {
   return (
     <section className={styles.feature}>
       <Image src={props.img} width={200} height={200} alt={''} />
-      <div className={'font-display label bg-yellow text-black'}>{props.text}</div>
+      <div className={'font-display label bg-blue-normal text-white'}>{props.text}</div>
     </section>
   );
 };
@@ -78,7 +78,7 @@ const animation5 = {
 };
 
 const Features = () => {
-  const interval = 0.3;
+  const interval = 0.25;
 
   return (
     <div className={styles.features}>
@@ -104,7 +104,7 @@ const Features = () => {
         variants={animation3}
         transition={{ duration: 0.5, delay: 3 * interval }}
       >
-        <Feature img={'/assets/images/foto2.jpg'} text={'Toeslagen'} />
+        <Feature img={'/assets/images/foto2.jpg'} text={'Goed salaris!'} />
       </motion.div>
       <motion.div
         initial="hidden"
@@ -120,7 +120,7 @@ const Features = () => {
         variants={animation5}
         transition={{ duration: 0.5, delay: 5 * interval }}
       >
-        <Feature img={'/assets/images/foto5.jpg'} text={'Goed salaris!'} />
+        <Feature img={'/assets/images/foto5.jpg'} text={'Toeslagen'} />
       </motion.div>
     </div>
   );

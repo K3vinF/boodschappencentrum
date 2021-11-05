@@ -15,11 +15,16 @@
   left: 0;
   z-index: 100;
   transition: 0.2s transform linear;
-  @apply leading-10;
+  line-height: 2.5;
   @apply bg-gray-100;
+  @apply  text-2xl;
   @apply p-7;
 }
 
 .menuclosed {
   transform: translateX(-100%);
+}
+
+.logo {
+  max-height: 10vh;
 }

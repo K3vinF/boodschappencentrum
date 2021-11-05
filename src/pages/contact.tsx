@@ -9,7 +9,7 @@ const Solliciteren = () => (
   <Main meta={<Meta title="Contact" description="" />}>
     <Content>
       <h1>Contact</h1>
-      <p>Heb je vragen? Lopen even in de winkel binnen, en vraag naar Tom of Thierry?</p>
+      <p>Heb je vragen? Lopen even in de winkel binnen, en vraag naar Tom of Thierry.</p>
       <address>Boodschappencentrum Heenvliet Toldam 1 3218AM Heenvliet</address>
     </Content>
   </Main>

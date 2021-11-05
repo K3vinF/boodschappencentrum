@@ -16,4 +16,13 @@ module.exports = withBundleAnalyzer({
     webpack5: true,
   },
   target: 'serverless',
+  async redirects() {
+    return [
+      {
+        source: '/werkenbij',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 });

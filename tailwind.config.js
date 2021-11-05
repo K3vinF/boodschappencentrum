@@ -26,6 +26,10 @@ module.exports = {
         },
         green: '#47A927',
         yellow: '#FBDF0A',
+        blue: {
+          normal: '#00A0C6',
+          light: '#82D0E3',
+        },
       },
     },
   },

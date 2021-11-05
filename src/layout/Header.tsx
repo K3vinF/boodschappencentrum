@@ -22,9 +22,10 @@ const Header = (props: INavbarProps) => {
 
         <div className={'flex items-start'}>
           <Link href={'/'}>
-            <a className={'flex flex-col items-center mr-8'}>
+            <a className={'flex flex-col md:flex-row items-center mr-8'}>
               <span className={'text-center ' + styles.label}>Werken bij</span>
               <img
+                className={styles.logo}
                 src={'/assets/boodschappencentrumheenvliet.svg'}
                 alt={'Boodsschappencentrum Heenvliet'}
                 width={460}

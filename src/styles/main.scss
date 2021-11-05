@@ -19,7 +19,8 @@ input {
 button {
   @apply bg-green;
   @apply text-white;
-  @apply p-2;
+  @apply px-2;
+  @apply py-2;
   @apply rounded;
 }
 
@@ -27,6 +28,13 @@ h1, h2, h3, h4, h5 {
   margin-top: 1em;
   @apply font-display;
   @apply text-yellow;
+}
+
+label {
+  [type="checkbox"] {
+    margin: .5em;
+    transform: scale(1.5);
+  }
 }
 
 p {
@@ -38,9 +46,16 @@ h1 {
 }
 
 h2 {
-  @apply text-2xl;
+  @apply text-3xl;
 }
 
 h3 {
   @apply text-xl;
+}
+
+[class^="web-share-"] {
+  &, & * {
+    @apply text-black;
+  }
+
 }
