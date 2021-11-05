@@ -52,7 +52,7 @@ export default function CustomForm(props: { className: string }) {
       ref={formRef}
       data-netlify="true"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="job-application" />
 
       <div className="hidden">
         <label>
