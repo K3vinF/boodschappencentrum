@@ -3,9 +3,7 @@ import { Header } from '../layout/Header';
 import Sticky from 'react-sticky-el';
 import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
-import classnames from 'classnames';
-import styles from '../layout/header.module.scss';
-import Link from 'next/link';
+import { Menu } from '../menu/Menu';
 
 type IMainProps = {
   meta: ReactNode;
@@ -24,28 +22,7 @@ const Main = (props: IMainProps) => {
   return (
     <AnimateSharedLayout>
       <AnimatePresence key={router.asPath}>
-        <div
-          className={classnames(styles.menu, { [`${styles.menuclosed}`]: !menuOpen })}
-          key={'menu'}
-        >
-          <ul>
-            <li>
-              <Link href={'/'}>
-                <a>Home</a>
-              </Link>
-            </li>
-            <li>
-              <Link href={'/solliciteren'}>
-                <a>Solliciteren</a>
-              </Link>
-            </li>
-            <li>
-              <Link href={'/contact'}>
-                <a>Contact</a>
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <Menu menuOpen={menuOpen} />
         <Sticky mode={'top'}>
           <Header menuOpen={menuOpen} closeMenu={closeMenu} openMenu={openMenu} />
         </Sticky>
