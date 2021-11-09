@@ -32,6 +32,7 @@
     "react-hook-form": "^7.18.0",
     "react-icons": "^4.3.1",
     "react-sticky-el": "^2.0.9",
+    "react-use": "^17.3.1",
     "react-web-share": "^1.1.0",
     "rehype-stringify": "^8.0.0",
     "remark-gfm": "^1.0.0",

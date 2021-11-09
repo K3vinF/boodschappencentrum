@@ -10,6 +10,7 @@ main {
   min-height: 100vh;
 }
 
+select,
 input {
   @apply p-2;
   @apply text-white;
@@ -26,6 +27,7 @@ button {
 
 h1, h2, h3, h4, h5 {
   margin-top: 1em;
+  line-height: 1;
   @apply font-display;
   @apply text-yellow;
 }
@@ -38,7 +40,11 @@ label {
 }
 
 p {
-  margin-top: 1em;
+  margin-top: .75em;
+}
+
+a {
+  @apply text-blue-light;
 }
 
 h1 {

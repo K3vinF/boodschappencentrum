@@ -15,14 +15,19 @@
   left: 0;
   z-index: 100;
   transition: 0.2s transform linear;
+  box-shadow:  0 0 30px rgba(black,0.3);
   line-height: 2.5;
   @apply bg-gray-100;
   @apply  text-2xl;
   @apply p-7;
+  a {
+    @apply text-white;
+  }
 }
 
 .menuclosed {
   transform: translateX(-100%);
+  box-shadow: none;
 }
 
 .logo {

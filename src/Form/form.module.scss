@@ -10,5 +10,9 @@
   }
   .error {
     @apply text-yellow;
+    font-style: italic;
+  }
+  .select {
+    margin-top: 1.5em;
   }
 }

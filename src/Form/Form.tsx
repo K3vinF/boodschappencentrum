@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import ReactGA from 'react-ga';
-import { Controller, useForm } from 'react-hook-form';
-import DatePicker from 'react-datepicker';
+import { useForm } from 'react-hook-form';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './form.module.scss';
 import _ from 'lodash/fp';
@@ -16,8 +16,7 @@ export const TrackClickEvent = (action: string) => {
 export default function CustomForm(props: { className: string }) {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const { register, control, handleSubmit, formState } = useForm({ reValidateMode: 'onSubmit' });
-
+  const { register, handleSubmit, formState } = useForm({ reValidateMode: 'onBlur' });
   const onSubmit = () => {
     if (!_.isEmpty(formState.errors)) {
       ScrollToError(formState.errors);
@@ -58,6 +57,7 @@ export default function CustomForm(props: { className: string }) {
         <label>
           Don’t fill this out if you are human: <input name="bot-field" />
         </label>
+        <input name={'subject'} defaultValue={'Sollicitatie via Boodschappencentrum.nl'} />
       </div>
 
       <h2>Je gegevens</h2>
@@ -100,27 +100,30 @@ export default function CustomForm(props: { className: string }) {
         )}
       </p>
 
-      <p>
-        <label htmlFor="phone">Je geboortedatum:</label>
-        <Controller
-          control={control}
-          name="birthday"
-          rules={{ required: true }}
-          render={({ field }) => (
-            <DatePicker
-              placeholderText="Selecteer je geboortedatum"
-              onChange={(date) => field.onChange(date)}
-              selected={field.value}
-              showYearDropdown
-              yearDropdownItemNumber={80}
-              scrollableYearDropdown
-              startDate={new Date('1950-01-01')}
-              maxDate={new Date('2007-01-01')}
-            />
-          )}
-        />
-        {formState.errors.birthday && <span className={styles.error}>Vul je geboortedatum in</span>}
-      </p>
+      <div className={styles.select + ' flex flex-row'}>
+        <label htmlFor="age">Je leeftijd:</label>
+        <select {...register('age', { required: true })} name="age" id="age">
+          <option value="">--Selecteer je leeftijd--</option>
+          <option value={'binnnenkort 15'}>Ik word binnenkort 15</option>
+          <option value={'15'}>15</option>
+          <option value={'16'}>16</option>
+          <option value={'17'}>17</option>
+          <option value={'18'}>18</option>
+          <option value={'19'}>19</option>
+          <option value={'20'}>20</option>
+          <option value={'21'}>21</option>
+          <option value={'22'}>22</option>
+          <option value={'23'}>23</option>
+          <option value={'24'}>24</option>
+          <option value={'25'}>25</option>
+          <option value={'26'}>26</option>
+          <option value={'27'}>27</option>
+          <option value={'28'}>28</option>
+          <option value={'29'}>29</option>
+          <option value={'30'}>30 of ouder</option>
+        </select>
+      </div>
+      {formState.errors.age && <span className={styles.error}>Vul je leeftijd in</span>}
 
       <h2>In welke winkels zou je willen werken?</h2>
       <p>

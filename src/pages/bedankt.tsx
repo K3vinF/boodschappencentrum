@@ -38,7 +38,7 @@ const Bedankt = () => {
               closeText={'sluiten'}
               sites={['facebook', 'whatsapp', 'telegram', 'twitter']}
             >
-              <button>Deel dee link!</button>
+              <button>Deel deze link!</button>
             </RWebShare>
           </div>
         </div>

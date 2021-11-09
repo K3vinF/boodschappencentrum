@@ -33,7 +33,7 @@ const Header = (props: INavbarProps) => {
               />
             </a>
           </Link>
-          <div className={'p4'}>
+          <div className={'p4 ml-auto'}>
             <Hamburger toggled={props.menuOpen} toggle={props.openMenu} />
           </div>
         </div>

@@ -8,7 +8,7 @@ import CustomForm from '../Form/Form';
 const Solliciteren = () => (
   <Main meta={<Meta title="Werken bij het Boodschappencentrum Heenvliet" description="" />}>
     <Content>
-      <p>Wil jij komen werken bij een van de winkels in het Boodschappencentrum Heenvliet?</p>
+      <p>Wil jij werken in een van de winkels van het Boodschappencentrum Heenvliet?</p>
       <p>Vul onderstaand formulier in, en wij nemen contact met je op!</p>
       <CustomForm className={'pt-6'} />
     </Content>
