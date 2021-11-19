@@ -24,7 +24,7 @@ const Bedankt = () => {
         </div>
         <div className={'text-center'}>
           <h1>Gelukt!</h1>
-          <p>Je sollicitatie ontvangen, we nemen zo snel mogelijk contact met je op.</p>
+          <p>Je sollicitatie is ontvangen, we nemen zo snel mogelijk contact met je op.</p>
         </div>
         <div className={'text-center'}>
           <p>Ook interessant voor iemand anders?</p>

@@ -125,24 +125,27 @@ export default function CustomForm(props: { className: string }) {
       </div>
       {formState.errors.age && <span className={styles.error}>Vul je leeftijd in</span>}
 
-      <h2>In welke winkels zou je willen werken?</h2>
+      <h2>Waar zou je willen werken?</h2>
       <p>
-        <label>
-          <input type={'checkbox'} name={'shop'} value={'ah'} />
-          Albert Heijn
-        </label>
-        <label>
-          <input type={'checkbox'} name={'shop'} value={'etos'} />
-          Etos
-        </label>
-        <label>
-          <input type={'checkbox'} name={'shop'} value={'primera'} />
-          Primera
-        </label>
-        <label>
-          <input type={'checkbox'} name={'shop'} value={'gall'} />
-          Gall & Gall
-        </label>
+        <fieldset>
+          <legend>Selecteer de winkel(s)</legend>
+          <label>
+            <input type={'checkbox'} name={'winkel'} value={'Albert Heijn'} />
+            Albert Heijn
+          </label>
+          <label>
+            <input type={'checkbox'} name={'winkel'} value={'Etos'} />
+            Etos
+          </label>
+          <label>
+            <input type={'checkbox'} name={'winkel'} value={'Primera'} />
+            Primera
+          </label>
+          <label>
+            <input type={'checkbox'} name={'winkel'} value={'Gall'} />
+            Gall & Gall
+          </label>
+        </fieldset>
       </p>
 
       <p>
