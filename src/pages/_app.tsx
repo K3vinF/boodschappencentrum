@@ -9,11 +9,12 @@ import '../styles/main.scss';
 // eslint-disable-next-line react/jsx-props-no-spreading
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const GA = 'G-P9ZZ3YFQSF';
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       // @ts-ignore gtag doesn't exsist
-      window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
+      window.gtag('config', GA, {
         page_path: url,
       });
     };
