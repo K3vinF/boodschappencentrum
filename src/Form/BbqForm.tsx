@@ -51,7 +51,7 @@ export default function BbqForm(props: { className: string }) {
       ref={formRef}
       data-netlify="true"
     >
-      <input type="hidden" name="form-name" value="job-application" />
+      <input type="hidden" name="form-name" value="bbq" />
 
       <div className="hidden">
         <label>
