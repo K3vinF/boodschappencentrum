@@ -4,11 +4,8 @@ import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 import { GiThumbUp } from 'react-icons/gi';
 import { motion } from 'framer-motion';
-import { RWebShare } from 'react-web-share';
 
 const Bedankt = () => {
-  const shareUrl = `https://boodschappencentrum.nl/werkenbij`;
-
   return (
     <Main meta={<Meta title="Contact" description="" />}>
       <Content>
