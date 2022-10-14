@@ -13,7 +13,7 @@ export const TrackClickEvent = (action: string) => {
   });
 };
 
-export default function BbqForm(props: { className: string }) {
+export default function BrunchForm(props: { className: string }) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const { register, handleSubmit, formState } = useForm({ reValidateMode: 'onBlur' });
@@ -45,7 +45,7 @@ export default function BbqForm(props: { className: string }) {
     <form
       className={props.className + ' ' + styles.form}
       name="bbq"
-      action="/bedankt-bbq"
+      action="/bedankt-brunch"
       onSubmit={handleSubmit(onSubmit)}
       method="POST"
       ref={formRef}
