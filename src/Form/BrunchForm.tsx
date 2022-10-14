@@ -44,7 +44,7 @@ export default function BrunchForm(props: { className: string }) {
   return (
     <form
       className={props.className + ' ' + styles.form}
-      name="bbq"
+      name="brunch"
       action="/bedankt-brunch"
       onSubmit={handleSubmit(onSubmit)}
       method="POST"
@@ -57,7 +57,7 @@ export default function BrunchForm(props: { className: string }) {
         <label>
           Don’t fill this out if you are human: <input name="bot-field" />
         </label>
-        <input name={'subject'} defaultValue={'Aanmelden medewerkers BBQ 26 september'} />
+        <input name={'subject'} defaultValue={'Aanmelden medewerkers Brunch 27 november'} />
       </div>
 
       <p>
@@ -73,7 +73,7 @@ export default function BrunchForm(props: { className: string }) {
       </p>
 
       <p>
-        <button onClick={() => TrackClickEvent('bbq-form')}>Ja ik kom!</button>
+        <button onClick={() => TrackClickEvent('brunch-form')}>Ja ik kom!</button>
       </p>
     </form>
   );
