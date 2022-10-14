@@ -51,7 +51,7 @@ export default function BrunchForm(props: { className: string }) {
       ref={formRef}
       data-netlify="true"
     >
-      <input type="hidden" name="form-name" value="bbq" />
+      <input type="hidden" name="form-name" value="brunch" />
 
       <div className="hidden">
         <label>
