@@ -1,0 +1,28 @@
+.logos {
+  margin: 2em 1em;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-gap: 2em;
+  grid-template-columns: 45% 45%;
+}
+.ah,
+.etos {
+  grid-row: 1;
+}
+.primera,
+.gall {
+  grid-row: 2;
+}
+@media all and (min-width: 800px) {
+  .logos {
+    grid-template-columns: 15% 15% 25% 25%;
+  }
+  .primera {
+    grid-row: 1;
+  }
+  .gall {
+    grid-row: 1;
+  }
+}
+
