@@ -7,6 +7,9 @@ const baseUrl = '';
 
 module.exports = withBundleAnalyzer({
   poweredByHeader: false,
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
   trailingSlash: true,
   basePath: baseUrl,
   env: {
