@@ -21,7 +21,7 @@ const Bedankt = () => {
         </div>
         <div className={'text-center'}>
           <h1>Gelukt!</h1>
-          <p>Tot 27 November!</p>
+          <p>Tot 3 December!</p>
         </div>
       </Content>
     </Main>
