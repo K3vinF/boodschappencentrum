@@ -6,9 +6,9 @@ import { Main } from '../templates/Main';
 import BbqForm from '../Form/BbqForm';
 
 const Page = () => (
-  <Main meta={<Meta title="Aanmelden Brunch" description="" />}>
+  <Main meta={<Meta title="Aanmelden BBQ" description="" />}>
     <Content>
-      <h1>Aanmelden BBQ 29 Juni</h1>
+      <h1>Aanmelden BBQ Boodschappencentrum</h1>
       <p>Ben jij erbij? Meld ja aan via onderstaand formulier</p>
       <BbqForm className={'pt-6'} />
     </Content>
