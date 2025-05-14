@@ -114,7 +114,7 @@ export default function CustomForm(props: { className: string }) {
               {age}
             </option>
           ))}
-          <option value={'binnnenkort 15'}>67+</option>
+          <option value={'6&+'}>67+</option>
         </select>
       </div>
       {formState.errors.age && <span className={styles.error}>Vul je leeftijd in</span>}
