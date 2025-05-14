@@ -57,7 +57,7 @@ export default function BbqForm(props: { className: string }) {
         <label>
           Don’t fill this out if you are human: <input name="bot-field" />
         </label>
-        <input name={'subject'} defaultValue={'Aanmelden bbq 17 Juni'} />
+        <input name={'subject'} defaultValue={'Aanmelden bbq'} />
       </div>
 
       <p>

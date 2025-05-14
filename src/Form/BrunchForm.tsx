@@ -57,7 +57,7 @@ export default function BrunchForm(props: { className: string }) {
         <label>
           Don’t fill this out if you are human: <input name="bot-field" />
         </label>
-        <input name={'subject'} defaultValue={'Aanmelden medewerkers Brunch 27 november'} />
+        <input name={'subject'} defaultValue={'Aanmelden medewerkers Brunch'} />
       </div>
 
       <p>

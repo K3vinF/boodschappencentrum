@@ -8,7 +8,7 @@ import BrunchForm from '../Form/BrunchForm';
 const Page = () => (
   <Main meta={<Meta title="Aanmelden Brunch" description="" />}>
     <Content>
-      <h1>Aanmelden Brunch 3 December</h1>
+      <h1>Aanmelden Brunch 24 November</h1>
       <p>Ben jij erbij? Meld ja aan via onderstaand formulier</p>
       <BrunchForm className={'pt-6'} />
     </Content>
