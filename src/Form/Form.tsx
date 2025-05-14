@@ -41,6 +41,10 @@ export default function CustomForm(props: { className: string }) {
     firstVisualError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
+  const start = 15;
+  const finish = 67;
+  const ages = Array.from({ length: finish - start + 1 }, (_, a) => a + start);
+
   return (
     <form
       className={props.className + ' ' + styles.form}
@@ -105,22 +109,12 @@ export default function CustomForm(props: { className: string }) {
         <select {...register('age', { required: true })} name="age" id="age">
           <option value="">--Selecteer je leeftijd--</option>
           <option value={'binnnenkort 15'}>Ik word binnenkort 15</option>
-          <option value={'15'}>15</option>
-          <option value={'16'}>16</option>
-          <option value={'17'}>17</option>
-          <option value={'18'}>18</option>
-          <option value={'19'}>19</option>
-          <option value={'20'}>20</option>
-          <option value={'21'}>21</option>
-          <option value={'22'}>22</option>
-          <option value={'23'}>23</option>
-          <option value={'24'}>24</option>
-          <option value={'25'}>25</option>
-          <option value={'26'}>26</option>
-          <option value={'27'}>27</option>
-          <option value={'28'}>28</option>
-          <option value={'29'}>29</option>
-          <option value={'30'}>30 of ouder</option>
+          {ages.map((age) => (
+            <option key={age} value={age}>
+              {age}
+            </option>
+          ))}
+          <option value={'binnnenkort 15'}>67+</option>
         </select>
       </div>
       {formState.errors.age && <span className={styles.error}>Vul je leeftijd in</span>}
