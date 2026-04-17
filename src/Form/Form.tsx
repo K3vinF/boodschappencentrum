@@ -16,7 +16,21 @@ export const TrackClickEvent = (action: string) => {
 export default function CustomForm(props: { className: string }) {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const { register, handleSubmit, formState } = useForm({ reValidateMode: 'onBlur' });
+  const { register, handleSubmit, formState } = useForm({
+    reValidateMode: 'onBlur',
+    resolver: (data) => {
+      const error: FieldErrors = {} as FieldErrors;
+
+      if (!data.phone.trim() && !data.mail.trim()) {
+        const message = 'Geef je telefoonnummer of e-mail door';
+        error.phone = error.mail = { message: message, type: '' };
+      }
+      return {
+        values: data,
+        errors: error,
+      };
+    },
+  });
   const onSubmit = () => {
     if (!_.isEmpty(formState.errors)) {
       ScrollToError(formState.errors);
@@ -93,15 +107,39 @@ export default function CustomForm(props: { className: string }) {
       <p>
         <label htmlFor="phone">Je telefoonnummer:</label>
         <input
-          {...register('phone', { required: true, minLength: 6, maxLength: 12 })}
+          {...register('phone', { minLength: 6, maxLength: 12 })}
           type="tel"
           name="phone"
           id="phone"
           autoComplete={'tel'}
         />
         {formState.errors.phone && (
-          <span className={styles.error}>Vul je volledige telefoonnummer in</span>
+          <span className={styles.error}>Vul je volledige e-mail of telefoonnummer in</span>
         )}
+      </p>
+
+      <p>
+        <label htmlFor="mail">Je e-mail:</label>
+        <input
+          {...register('mail', {
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: 'Dit lijkt geen geldig e-mail adres',
+            },
+          })}
+          type="email"
+          name="mail"
+          id="mail"
+          autoComplete={'mail'}
+        />
+        {formState.errors.mail && (
+          <span className={styles.error}>Vul je volledige e-mail of telefoonnummer in</span>
+        )}
+      </p>
+
+      <p>
+        <label htmlFor="info">Toelichting / motivatie:</label>
+        <textarea {...register('info', {})} type="text" name="info" id="info" rows="6" />
       </p>
 
       <div className={styles.select + ' flex flex-row'}>
